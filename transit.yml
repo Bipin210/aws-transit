@@ -1,0 +1,28 @@
+#######################CREATING TRANSIT GATEWAY #############################################
+- name: Cretae
+  hosts: local
+  gather_facts: False
+  vars_files:
+  - secret.yml
+  - variable.yml
+  tasks:
+  - name: Create a new transit gateway with options
+    community.aws.ec2_transit_gateway:        
+      aws_access_key: "{{ aws_access_key_id }}"
+      aws_secret_key: "{{ aws_secret_key_id }}"
+      asn: 64514          
+      auto_associate: yes 
+      auto_propagate: yes
+      dns_support: True   
+      description: "nonprod transit gateway"  
+      purge_tags: False   
+      state: absent
+      region: "{{ region[1] }}"                  
+      tags:               
+        Name: nonprod transit gateway         
+        status: testing
+
+    register: transit
+  - name: get output
+    debug:
+      msg: "get transit gateway details: {{ transit }} "

@@ -1,0 +1,41 @@
+region:
+- us-east-1
+- us-east-2
+# VPC
+vpc_cidr: 
+ - 10.0.0.0/24
+ - 10.1.0.0/24
+ - 10.2.0.0/24
+vpc_name:
+ - "Ansible VPC"
+ - "Ansible VPC 2"
+ - "Ansible VPC 3"
+# Subnet
+subnet_name: 
+  - "private_transit_sub1"
+  - "private_transit_sub2"
+  - "public_transit_sub3"
+subnet_cidr:
+ - 10.0.0.0/26
+ - 10.1.0.0/26
+ - 10.2.0.0/26
+# Internet Gateway Name
+igw_name: "Traffic IGW"
+ 
+securitygroup_name: 
+ - "Ansible Security Group1"
+ - "Ansible Security  Group2"
+ - "Ansible Security  Group3"
+ 
+ec2_tag: 
+ - "transit_test"
+ - "transit_test1"
+ - "transit_tets2"
+#The local path to which we would save our EC2 Private Key
+ec2_key_directory: "/home/ansible/.ssh/"
+keypair_name: "id_rsa.pub"
+
+route_table:
+  - bipin
+  - pandey
+  - surbhi
